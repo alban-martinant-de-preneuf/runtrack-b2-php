@@ -9,6 +9,3 @@ function my_is_prime(int $number) : bool {
 
     return true;
 }
-
-var_dump(my_is_prime(3));
-var_dump(my_is_prime(12));
