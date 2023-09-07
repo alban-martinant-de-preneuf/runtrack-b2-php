@@ -35,10 +35,8 @@
         string $gender,
         DateTime $birthdate,
         int $gradeId
-        )
-    {
-        $query = (
-            "INSERT INTO student (grade_id, email, fullname, birthdate, gender)
+    ) {
+        $query = ("INSERT INTO student (grade_id, email, fullname, birthdate, gender)
             VALUES (:grade_id, :email, :fullname, :birthdate, :gender)"
         );
         $statement = db_connect()->prepare($query);
@@ -51,28 +49,6 @@
         ]);
     }
 
-    function display_form(): void
-    {
-        echo '<form action="" method="POST">';
-        echo '<label for"input-email" id="input-email">Email</label>';
-        echo '<input type="email" name="input-email" id="input-email">';
-        echo '<label for"input-fullname" id="input-fullname">Fullname</label>';
-        echo '<input type="text" name="input-fullname" id="input-fullname">';
-        echo '<label for="input-gender" name="input-gender" id="input-gender">Genre</label>';
-        echo '<select name="input-gender">';
-        echo '<option name="male" value="male">Male</option>';
-        echo '<option name="female" value="female">Female</option>"';
-        echo '</select>';
-        echo '<label for"input-birthdate" id="input-birthdate">Birthdate</label>';
-        echo '<input type="date" name="input-birthdate" id="input-birthdate">';
-        echo '<label for"input-grade" id="input-grade">Grade</label>';
-        echo '<input type="number" name="input-grade" id="input-grade">';
-        echo '<input type="submit" value="insert">';
-        echo '</form>';
-    }
-
-    display_form();
-
     if (isset($_POST)) {
         $email = $_POST['input-email'];
         $fullname = $_POST['input-fullname'];
@@ -84,6 +60,29 @@
     }
 
     ?>
+
+    <form action="" method="POST">
+        <label for="input-email" id="input-email">Email</label>
+        <input type="email" name="input-email" id="input-email">
+
+        <label for="input-fullname" id="input-fullname">Fullname</label>
+        <input type="text" name="input-fullname" id="input-fullname">
+
+        <label for="input-gender" name="input-gender" id="input-gender">Genre</label>
+        <select name="input-gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <label for="input-birthdate" id="input-birthdate">Birthdate</label>
+        <input type="date" name="input-birthdate" id="input-birthdate">
+
+        <label for="input-grade" id="input-grade">Grade</label>
+        <input type="number" name="input-grade" id="input-grade">
+
+        <input type="submit" value="insert">
+    </form>
+
 
 </body>
 
