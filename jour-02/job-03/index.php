@@ -35,7 +35,7 @@
         string $gender,
         DateTime $birthdate,
         int $gradeId
-    ) {
+    ) : void {
         $query = ("INSERT INTO student (grade_id, email, fullname, birthdate, gender)
             VALUES (:grade_id, :email, :fullname, :birthdate, :gender)"
         );
@@ -44,8 +44,8 @@
             ':grade_id' => $gradeId,
             ':email' => $email,
             ':fullname' => $fullname,
-            'birthdate' => $birthdate->format('Y-m-d'),
-            'gender' => $gender
+            ':birthdate' => $birthdate->format('Y-m-d'),
+            ':gender' => $gender
         ]);
     }
 
