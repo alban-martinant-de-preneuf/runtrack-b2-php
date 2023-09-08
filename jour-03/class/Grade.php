@@ -2,7 +2,8 @@
 
 require_once "./class/Student.php";
 
-class Grade {
+class Grade
+{
 
     private ?int $id;
     private ?int $room_id;
@@ -21,49 +22,58 @@ class Grade {
         $this->year = $year;
     }
 
-    public function getId(): ?int {
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function getRoomId(): ?int {
+    public function getRoomId(): ?int
+    {
         return $this->room_id;
     }
 
-    public function getName(): ?string {
+    public function getName(): ?string
+    {
         return $this->name;
     }
 
-    public function getYear(): ?DateTime {
+    public function getYear(): ?DateTime
+    {
         return $this->year;
     }
 
-    public function setId(?int $id): void {
+    public function setId(?int $id): void
+    {
         $this->id = $id;
     }
 
-    public function setRoomId(?int $room_id): void {
+    public function setRoomId(?int $room_id): void
+    {
         $this->room_id = $room_id;
     }
 
-    public function setName(?string $name): void {
+    public function setName(?string $name): void
+    {
         $this->name = $name;
     }
 
-    public function setYear(?DateTime $year): void {
+    public function setYear(?DateTime $year): void
+    {
         $this->year = $year;
     }
 
     private function db_connect(): PDO
-{
-    $db = new PDO(
-        'mysql:host=localhost;dbname=lp_official;charset=utf8',
-        'root',
-        ''
-    );
-    return $db;
-}
+    {
+        $db = new PDO(
+            'mysql:host=localhost;dbname=lp_official;charset=utf8',
+            'root',
+            ''
+        );
+        return $db;
+    }
 
-    public function getStudents(): ?array {
+    public function getStudents(): ?array
+    {
         $query = "SELECT * FROM student WHERE grade_id = :id";
         $statement = $this->db_connect()->prepare($query);
         $statement->execute([":id" => $this->id]);
