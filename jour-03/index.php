@@ -18,6 +18,10 @@ $room2 = new Room();
 $floor = new Floor(1, "Rez-de-chaussée", 0);
 $floor2 = new Floor();
 
+$students = $grade->getStudents();
+
+var_dump($students);
+
 var_dump(findOneStudent(5));
 var_dump(findOneGrade(5));
 var_dump(findOneRoom(5));

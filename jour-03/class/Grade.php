@@ -1,5 +1,7 @@
 <?php
 
+require_once "./class/Student.php";
+
 class Grade {
 
     private ?int $id;
@@ -49,5 +51,37 @@ class Grade {
 
     public function setYear(?DateTime $year): void {
         $this->year = $year;
+    }
+
+    private function db_connect(): PDO
+{
+    $db = new PDO(
+        'mysql:host=localhost;dbname=lp_official;charset=utf8',
+        'root',
+        ''
+    );
+    return $db;
+}
+
+    public function getStudents(): ?array {
+        $query = "SELECT * FROM student WHERE grade_id = :id";
+        $statement = $this->db_connect()->prepare($query);
+        $statement->execute([":id" => $this->id]);
+        $students = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $studentsInstencies = [];
+
+        foreach ($students as $student) {
+            $studentsInstencies[] = new Student(
+                $student['id'],
+                $student['grade_id'],
+                $student['email'],
+                $student['fullname'],
+                new DateTime($student['birthdate']),
+                $student['gender']
+            );
+        }
+
+        return $studentsInstencies;
     }
 }
