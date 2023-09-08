@@ -4,6 +4,7 @@ require_once "./class/Student.php";
 require_once "./class/Grade.php";
 require_once "./class/Room.php";
 require_once "./class/Floor.php";
+require_once "./function.php";
 
 $student = new Student(1, 1, "email@email.com", "Terry Cristinelli", new DateTime("1998-01-18"), "male");
 $student2 = new Student();
@@ -17,7 +18,8 @@ $room2 = new Room();
 $floor = new Floor(1, "Rez-de-chaussée", 0);
 $floor2 = new Floor();
 
-var_dump($student2, $student);
-var_dump($grade2, $grade);
-var_dump($room2, $room);
-var_dump($floor2, $floor);
+var_dump(findOneStudent(5));
+var_dump(findOneGrade(5));
+var_dump(findOneRoom(5));
+var_dump(findOneFloor(1));
+
