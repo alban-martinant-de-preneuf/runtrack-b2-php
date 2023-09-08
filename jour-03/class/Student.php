@@ -2,12 +2,12 @@
 
 class Student {
 
-    public ?int $id;
-    public ?int $grade_id;
-    public ?string $email;
-    public ?string $fullname;
-    public ?DateTime $birthdate;
-    public ?string $gender;
+    private ?int $id;
+    private ?int $grade_id;
+    private ?string $email;
+    private ?string $fullname;
+    private ?DateTime $birthdate;
+    private ?string $gender;
 
     public function __construct(
         ?int $id = null,
